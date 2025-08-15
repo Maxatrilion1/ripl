@@ -1,0 +1,460 @@
+/*
+ * Revised styles for the Ripl landing page
+ *
+ * This stylesheet rebuilds the landing page from the ground up to better
+ * reflect the warm, community‑focused vision depicted in the provided
+ * screen recording. The palette draws from the user‑specified colours and
+ * applies them through soft gradients, airy cards and friendly typography.
+ * Layouts rely on flexbox and CSS grid to gracefully adapt from mobile to
+ * desktop screens. Emphasised phrases use accent colours for an emotional
+ * hook while business benefits remain clear.
+ */
+
+:root {
+  /* Core palette based on the supplied hues */
+  --color-bg: #EFEDE1;             /* soft sand background */
+  --color-primary: #B0E2E8;        /* light blue for accents */
+  --color-primary-dark: #508086;   /* darker blue for contrast */
+  --color-primary-light: #7FB0B6;  /* medium blue */
+  --color-accent: #FF8F53;         /* warm orange for calls to action */
+  --color-accent-light: #FFC081;   /* lighter orange for gradients */
+  --color-accent-dark: #C76026;    /* deep orange for hover states */
+  --color-text: #10263E;           /* charcoal for high legibility */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+/* Utility container to centre and constrain content */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Accent classes to highlight important words */
+.accent-orange {
+  color: var(--color-accent);
+}
+
+.accent-lightblue {
+  color: var(--color-primary-dark);
+}
+
+/* ---------- HERO (top sign‑up card) ---------- */
+header.hero {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+header.hero .hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('hero_blurred.png');
+  background-size: cover;
+  background-position: center;
+  /* Place behind content */
+  z-index: -1;
+}
+
+header.hero .hero-background::after {
+  /* Soft white overlay to enhance legibility */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Container for hero headline and sign‑up form */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* Large headline at the top of the hero section */
+.hero-headline {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+}
+
+@media (min-width: 600px) {
+  .hero-headline {
+    font-size: 3.2rem;
+  }
+}
+
+/* Card that holds the sign‑up form */
+.signup-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem 1.5rem;
+  width: 100%;
+  /* Increase the maximum width so that longer placeholder text (e.g. "Business name" or "Email address") isn't clipped */
+  max-width: 700px;
+}
+
+/* Waitlist form layout */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+/* On larger screens arrange form items horizontally */
+@media (min-width: 600px) {
+  .signup-form {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Group containing both inputs and separator */
+.input-group {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+.input-group input::placeholder {
+  color: var(--color-primary-dark);
+}
+
+.input-group .separator {
+  width: 1px;
+  height: 2rem;
+  background-color: var(--color-primary);
+}
+
+/* Sign‑up button styling */
+.signup-form button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--color-accent-light), var(--color-accent));
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  flex-shrink: 0;
+}
+
+.signup-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Space between input group and button when horizontal */
+@media (min-width: 600px) {
+  .signup-form .input-group {
+    margin-right: 1rem;
+  }
+}
+
+/* ---------- CHALLENGE SECTION ---------- */
+.challenge {
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+
+.challenge h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+
+.problem-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.problem-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  flex: 1 1 260px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.problem-card .emoji {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  /* Let emojis retain their native colours rather than forcing an accent */
+  color: inherit;
+}
+
+.problem-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* ---------- SOLUTION SECTION ---------- */
+.solution {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.solution h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.solution-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ---------- FEATURES SECTION ---------- */
+.features {
+  padding: 4rem 0;
+}
+
+.feature-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.feature {
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem 1.5rem;
+  flex: 1 1 260px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 2rem;
+  margin: 0 auto 1rem;
+}
+
+.gradient-orange {
+  background: linear-gradient(to right, var(--color-accent-light), var(--color-accent));
+}
+
+.gradient-blue {
+  background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
+}
+
+.feature h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* ---------- RESULTS SECTION ---------- */
+.results {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.results h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.results .results-tagline {
+  font-size: 1rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 2.5rem;
+}
+
+.result-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.result-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem 1.5rem;
+  flex: 1 1 220px;
+  max-width: 280px;
+  text-align: center;
+}
+
+.result-card .emoji {
+  font-size: 2.6rem;
+  margin-bottom: 0.8rem;
+  /* Do not force a single colour on emojis to preserve their multi‑colour appearance */
+  color: inherit;
+}
+
+.result-card h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--color-text);
+}
+
+.result-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.result-card small {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-primary-dark);
+}
+
+/* ---------- FUTURE VISION SECTION ---------- */
+.future {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.future-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.future-card p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.future-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.future-icons .emoji {
+  font-size: 2rem;
+}
+
+/* ---------- FINAL CTA SECTION ---------- */
+.final-cta {
+  padding: 4rem 0 5rem;
+  text-align: center;
+}
+
+.final-cta h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.final-cta .cta-tagline {
+  font-size: 1rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 2rem;
+}
+
+/* Reuse the signup card in the final CTA */
+.final-cta .signup-card {
+  margin: 0 auto;
+}
+
+/* Completion message after sign‑up */
+.completed-message {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.9rem;
+  color: var(--color-primary-dark);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
