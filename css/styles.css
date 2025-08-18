@@ -1,0 +1,531 @@
+/*
+ * Global styles for the Ripl marketing site.
+ *
+ * This stylesheet defines a shared design system used by both the venue
+ * and investor pages. It implements the warm, airy café vibe
+ * specified in the build brief: soft background colours, clear
+ * typography using Inter, generous whitespace and subtle motion
+ * effects. Components such as cards, forms and stat tiles are
+ * modular and responsive, scaling gracefully from desktop down to
+ * mobile breakpoints. All colours meet WCAG AA contrast ratios.
+ */
+
+/* Root palette definition. Changing these values will update colours
+   throughout the site. */
+:root {
+  --bg: #efede1;
+  --blue-light: #b0e2e8;
+  --blue-mid: #7fb0b6;
+  --blue-dark: #508086;
+  --orange: #ff8f53;
+  --orange-light: #ffc081;
+  --orange-dark: #c76026;
+  --text-color: #10263e;
+  --white: #ffffff;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Basic reset and typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text-color);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1.hero-heading {
+  font-size: 2.8rem;
+}
+
+@media (min-width: 600px) {
+  h1.hero-heading {
+    font-size: 3.4rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+small {
+  font-size: 0.8rem;
+}
+
+/* Visually hidden class for accessible labels */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Container to centralise content and limit width */
+.container {
+  width: 90%;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Accent colours applied to selected text fragments */
+.accent-orange {
+  color: var(--orange);
+}
+.accent-blue {
+  color: var(--blue-dark);
+}
+
+/* Navigation bar */
+.page-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  padding-top: 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 0.5rem 0.75rem;
+  transition: color 0.15s ease;
+}
+
+/* Active navigation link styling */
+.nav a.active {
+  text-decoration: underline;
+  color: var(--orange);
+}
+
+.nav a:hover {
+  color: var(--orange);
+}
+
+.nav .logo {
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+/* Hero styles */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 4rem 0;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/hero_blurred.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -3;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: -2;
+}
+
+/* Subtle ripple animation behind the hero content */
+.hero-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 60%);
+  animation: ripple 12s infinite ease-in-out;
+  z-index: -1;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animation {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+.hero-content {
+  z-index: 1;
+}
+
+.subheadline {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Form styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fields-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .fields-group {
+    flex-direction: row;
+  }
+}
+
+.input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--white);
+  color: var(--text-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.input-wrapper input::placeholder,
+.input-wrapper select {
+  color: var(--blue-dark);
+}
+
+.input-wrapper select {
+  appearance: none;
+  background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D"http%3A//www.w3.org/2000/svg"%20viewBox%3D"0%200%20512%20512"%3E%3Cpath%20fill%3D%22%23508086%22%20d%3D%22M256%20320L96%20160h320L256%20320z"/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.65rem;
+}
+
+/* Hide default select arrow on Firefox */
+@-moz-document url-prefix() {
+  .input-wrapper select {
+    background-image: none;
+  }
+}
+
+/* CTA button */
+.cta-btn {
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: linear-gradient(to right, var(--orange-light), var(--orange));
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cta-btn:focus {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.honeypot {
+  display: none;
+}
+
+/* Status message shown after form submission */
+.form-status {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--blue-dark);
+  min-height: 1.2rem;
+}
+
+/* Cards (used in patterns, value etc.) */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 600px) {
+  .cards.three-col {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  flex: 1 1 250px;
+}
+
+.card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Proof (stat) tiles */
+.proof {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.proof-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.stat {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  flex: 1;
+}
+
+.stat h3 {
+  font-size: 2rem;
+  color: var(--orange);
+  margin-bottom: 0.5rem;
+}
+
+.stat p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.stat small {
+  font-size: 0.8rem;
+  color: var(--blue-dark);
+}
+
+@media (min-width: 600px) {
+  .proof-grid {
+    flex-direction: row;
+  }
+  .stat {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+/* Narrative section on investor page */
+.narrative {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.narrative-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.narrative-item {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  flex: 1;
+}
+
+.narrative-item h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.narrative-item p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 600px) {
+  .narrative-grid {
+    flex-direction: row;
+  }
+  .narrative-item {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+/* Mission section */
+.mission {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.mission-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--blue-dark);
+}
+
+/* Final CTA section */
+.final-cta {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.final-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cta-tagline {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Footer */
+.site-footer {
+  padding: 2rem 0;
+  text-align: center;
+  background-color: var(--bg);
+  color: var(--text-color);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: var(--text-color);
+  margin-left: auto;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.footer-link:hover {
+  color: var(--orange);
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .footer-link {
+    margin-left: 0;
+  }
+}

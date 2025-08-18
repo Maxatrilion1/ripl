@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ripl — The Engagement Layer for Every Third Place</title>
+    <!--
+      The investor landing page uses the same design language as the
+      venue page but adapts the narrative for prospective investors.  It
+      features a hero with a typewriter effect cycling through cafés,
+      gyms and coworking spaces, a form to request the investor deck,
+      proof tiles, a three‑column narrative (Why now, Wedge, Scale) and
+      a concise mission statement.  All motion degrades gracefully and
+      respects prefers‑reduced‑motion.  Accessible labels, ARIA
+      attributes and semantic markup are provided throughout.
+    -->
+    <meta name="description" content="Discover how Ripl creates an engagement layer for cafés, gyms and coworking spaces. Request our investor deck to learn more." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="page-header" role="banner">
+      <nav class="nav container" aria-label="Primary">
+        <a href="index.html" class="logo" aria-label="Ripl venues home"
+          >Ripl</a
+        >
+        <a href="index.html" class="nav-link" id="venueNav">Venues</a>
+      </nav>
+    </header>
+    <main>
+      <!-- Investor hero with typewriter effect cycling through cafés, gyms and coworking
+           spaces.  The typed text always ends on “cafés”. -->
+      <section class="hero investor-hero" aria-labelledby="investor-hero-heading">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-animation" aria-hidden="true"></div>
+        <div class="hero-content container">
+          <h1 id="investor-hero-heading" class="hero-heading">
+            The Engagement Layer for Every Third Place
+          </h1>
+          <p class="subheadline">
+            Ripl transforms
+            <span id="typed-target" class="typed-target">cafés</span>
+            into thriving community engines.
+          </p>
+          <form
+            id="investor-form"
+            class="form investor-form"
+            data-source="investor"
+            novalidate
+          >
+            <div class="fields-group">
+              <div class="input-wrapper">
+                <label for="investorName" class="visually-hidden">Name</label>
+                <input
+                  type="text"
+                  id="investorName"
+                  name="name"
+                  placeholder="Name"
+                  required
+                />
+              </div>
+              <div class="input-wrapper">
+                <label for="investorEmail" class="visually-hidden">Work email</label>
+                <input
+                  type="email"
+                  id="investorEmail"
+                  name="emailAddress"
+                  placeholder="Work email"
+                  required
+                />
+              </div>
+              <div class="input-wrapper select-wrapper">
+                <label for="investorType" class="visually-hidden"
+                  >Investor type</label
+                >
+                <select id="investorType" name="investorType">
+                  <option value="">Investor type</option>
+                  <option value="Angel">Angel</option>
+                  <option value="Fund">Fund</option>
+                  <option value="Operator">Operator</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <!-- Honeypot field to deter bots. -->
+            <div class="honeypot" aria-hidden="true">
+              <label for="websiteInvestor">Website</label>
+              <input
+                type="text"
+                id="websiteInvestor"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+            <button type="submit" class="cta-btn">Request investor deck</button>
+            <div class="form-status" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Proof section repeated from venue page but with tighter spacing. -->
+      <section class="proof" aria-labelledby="investor-proof-heading">
+        <div class="container">
+          <h2 id="investor-proof-heading" class="visually-hidden">Proof</h2>
+          <div class="proof-grid">
+            <div class="stat">
+              <h3>100+</h3>
+              <p>
+                Sign‑ups in 20 days
+                <small>(no ads)</small>
+              </p>
+            </div>
+            <div class="stat">
+              <h3>89%</h3>
+              <p>Would return for Ripl</p>
+            </div>
+            <div class="stat">
+              <h3>+30%</h3>
+              <p>Lift potential from existing customers</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why now / Wedge / Scale narrative. Three equal columns on
+           larger screens and stacked on smaller devices. -->
+      <section class="narrative" aria-labelledby="narrative-heading">
+        <div class="container">
+          <h2 id="narrative-heading" class="narrative-heading visually-hidden">
+            Why Ripl, Why now, Wedge and Scale
+          </h2>
+          <div class="narrative-grid">
+            <div class="narrative-item">
+              <h3>Why now</h3>
+              <p>Human connection is under‑monetized; third places lack engagement tooling.</p>
+            </div>
+            <div class="narrative-item">
+              <h3>Wedge</h3>
+              <p>Cafés = perfect wedge (daily footfall, loyal patrons, clear upsell).</p>
+            </div>
+            <div class="narrative-item">
+              <h3>Scale</h3>
+              <p>Scale to coworking and beyond — one engagement layer for every hub.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mission statement. A simple line to close the narrative. -->
+      <section class="mission" aria-labelledby="mission-heading">
+        <div class="container">
+          <h2 id="mission-heading" class="visually-hidden">Mission</h2>
+          <p class="mission-text">
+            Align meaningful connection with sustainable revenue — at scale.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a href="index.html" class="footer-link">Venues</a>
+      </div>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>
