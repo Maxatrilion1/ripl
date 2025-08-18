@@ -54,13 +54,29 @@ h1, h2, h3 {
   line-height: 1.2;
 }
 
+/* Hero heading sizing: bigger on the venue page for emphasis,
+   slightly smaller on investor page to accommodate the longer line. */
 h1.hero-heading {
-  font-size: 2.8rem;
+  font-size: 3.5rem;
+  line-height: 1.1;
 }
 
 @media (min-width: 600px) {
   h1.hero-heading {
-    font-size: 3.4rem;
+    font-size: 4.8rem;
+  }
+}
+
+/* Investor hero headings use a more modest size and colour to fit the
+   longer string comfortably on one line. */
+.investor-hero .hero-heading {
+  font-size: 2.8rem;
+  color: var(--blue-dark);
+}
+
+@media (min-width: 600px) {
+  .investor-hero .hero-heading {
+    font-size: 3.6rem;
   }
 }
 
@@ -409,6 +425,132 @@ small {
 .stat small {
   font-size: 0.8rem;
   color: var(--blue-dark);
+}
+
+/* Benefits snapshot list */
+.benefits {
+  padding: 4rem 0;
+}
+
+.benefits-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem 2rem;
+  font-size: 1rem;
+}
+
+.benefits-list li {
+  line-height: 1.5;
+}
+
+.benefits-list li strong {
+  color: var(--orange);
+}
+
+@media (min-width: 600px) {
+  .benefits-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* How it works flow list */
+.flow {
+  padding: 4rem 0;
+}
+
+.flow-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  counter-reset: step;
+  font-size: 1rem;
+}
+
+.flow-list li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.flow-list li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--orange);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* Community vision section */
+.community {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.community-tagline {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--blue-dark);
+}
+
+.testimonial {
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--blue-dark);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Keep the typed text element a fixed width to avoid layout shift */
+/* The typed text container maintains a fixed width equal to the longest word
+   (“coworking spaces”), preventing layout shift as words change. */
+.typed-target {
+  display: inline-block;
+  width: 16ch;
+  text-align: left;
+}
+
+/* Growth list on investor page */
+.growth {
+  padding: 4rem 0;
+}
+
+.growth-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem 2rem;
+  font-size: 1rem;
+}
+
+.growth-list li {
+  line-height: 1.5;
+}
+
+.growth-list li strong {
+  color: var(--orange);
+}
+
+@media (min-width: 600px) {
+  .growth-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (min-width: 600px) {
