@@ -21,7 +21,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <!-- Append a version query string so the latest CSS is always fetched -->
+    <!-- Sync version with index for updated styles -->
+    <!-- Sync version with index for updated styles -->
+    <link rel="stylesheet" href="css/styles.css?v=11" />
   </head>
   <body>
     <header class="page-header" role="banner">
@@ -33,38 +36,34 @@
       </nav>
     </header>
     <main>
-      <!-- Investor hero with typewriter effect cycling through cafés, gyms and coworking
-           spaces.  The typed text always ends on “cafés”. -->
+      <!-- Investor hero: a bold two‑line headline and a static tagline.  The hero
+           mirrors the venue page in style but speaks directly to investors. -->
       <section class="hero investor-hero" aria-labelledby="investor-hero-heading">
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-overlay" aria-hidden="true"></div>
         <div class="hero-animation" aria-hidden="true"></div>
         <div class="hero-content container">
           <h1 id="investor-hero-heading" class="hero-heading">
-            <span class="accent-blue">The Engagement Layer for Every</span>
+            <span class="accent-blue">The Engagement Layer for Every</span><br />
             <span class="accent-orange">Third Place</span>
           </h1>
-          <p class="subheadline">
-            Ripl transforms <span id="typed-target" class="typed-target">cafés</span>
-          </p>
-          <p class="subheadline">into thriving community engines.</p>
+          <p class="subheadline"><strong>Ripl transforms <span class="accent-orange">cafés</span> into thriving community engines.</strong></p>
           <form
             id="investor-form"
-            class="form investor-form"
+            class="waitlist-form investor-form"
             data-source="investor"
             novalidate
           >
-            <div class="fields-group">
-              <div class="input-wrapper">
-                <label for="investorEmail" class="visually-hidden">Email</label>
-                <input
-                  type="email"
-                  id="investorEmail"
-                  name="emailAddress"
-                  placeholder="Email"
-                  required
-                />
-              </div>
+            <div class="form-row">
+              <label for="investorEmail" class="visually-hidden">Business email</label>
+              <input
+                type="email"
+                id="investorEmail"
+                name="emailAddress"
+                placeholder="Enter your business email"
+                required
+              />
+              <button type="submit" class="cta-btn">Request investor deck</button>
             </div>
             <!-- Honeypot field to deter bots. -->
             <div class="honeypot" aria-hidden="true">
@@ -77,32 +76,39 @@
                 autocomplete="off"
               />
             </div>
-            <button type="submit" class="cta-btn">Request investor deck</button>
             <div class="form-status" aria-live="polite"></div>
           </form>
         </div>
       </section>
 
-      <!-- Growth and impact section for investors.  Highlights the market size,
-           network effects and mission alignment without repeating the venue
-           statistics. -->
-      <section class="growth" aria-labelledby="growth-heading">
+      <!-- Investment highlights section.  A four‑card snapshot of why Ripl is a compelling
+           opportunity: market size, network effects, revenue potential and mission.  Uses
+           the same card grid design as the venue benefits section. -->
+      <section class="highlights" aria-labelledby="highlights-heading">
         <div class="container">
-          <h2 id="growth-heading">Growth &amp; Impact</h2>
-          <ul class="growth-list">
-            <li>
-              <strong>Vast market</strong> → Millions of third places are ripe for Ripl, from cafés to gyms and coworking spaces.
-            </li>
-            <li>
-              <strong>Network effects</strong> → Every new location increases the value of the network for members and owners.
-            </li>
-            <li>
-              <strong>Revenue expansion</strong> → Engagement triggers cross‑sell and upsell opportunities, unlocking new revenue streams.
-            </li>
-            <li>
-              <strong>Meaningful mission</strong> → Align human connection with sustainable revenue, driving loyalty and lifetime value.
-            </li>
-          </ul>
+          <h2 id="highlights-heading">Investment Highlights</h2>
+          <div class="benefit-grid">
+            <div class="benefit-item">
+              <div class="benefit-icon">🌍</div>
+              <h3>Vast market</h3>
+              <p>Millions of third places (cafés, gyms and coworking spaces) are ready for Ripl.</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🔗</div>
+              <h3>Network effects</h3>
+              <p>Every new venue amplifies the platform’s value for members and owners.</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">📈</div>
+              <h3>Revenue expansion</h3>
+              <p>Engagement triggers cross‑sell and upsell opportunities, unlocking new revenue.</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">❤️</div>
+              <h3>Meaningful mission</h3>
+              <p>Align human connection with sustainable growth and long‑term loyalty.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -111,8 +117,45 @@
         <div class="container">
           <h2 id="mission-heading" class="visually-hidden">Mission</h2>
           <p class="mission-text">
-            Align meaningful connection with sustainable revenue — at scale.
+            Align meaningful connection with sustainable revenue at scale.
           </p>
+        </div>
+      </section>
+
+      <!-- Final call to action for investors.  Repeats the form on a
+           contrasting background to encourage sign‑ups at the end of the page. -->
+      <section class="cta-section investor-cta" aria-labelledby="investor-cta-heading">
+        <div class="container">
+          <h2 id="investor-cta-heading">Help us build the future of third places.</h2>
+          <form
+            id="investor-bottom-form"
+            class="waitlist-form"
+            data-source="investor"
+            novalidate
+          >
+            <div class="form-row">
+              <label for="emailInvestorBottom" class="visually-hidden">Business email</label>
+              <input
+                type="email"
+                id="emailInvestorBottom"
+                name="emailAddress"
+                placeholder="Enter your business email"
+                required
+              />
+              <button type="submit" class="cta-btn">Request investor deck</button>
+            </div>
+            <div class="honeypot" aria-hidden="true">
+              <label for="websiteInvestorBottom">Website</label>
+              <input
+                type="text"
+                id="websiteInvestorBottom"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+            <div class="form-status" aria-live="polite"></div>
+          </form>
         </div>
       </section>
     </main>

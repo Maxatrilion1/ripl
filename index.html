@@ -18,7 +18,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <!-- Append a cache‑busting query string to ensure CSS updates load -->
+    <!-- Update the cache‑busting query string when styles change -->
+    <!-- Increment the cache‑busting query string whenever styles change -->
+    <!-- Increment the cache‑busting query string whenever styles change -->
+    <link rel="stylesheet" href="css/styles.css?v=11" />
   </head>
   <body>
     <!-- Top navigation. A simple bar that floats above the hero and
@@ -41,30 +45,33 @@
         <div class="hero-animation" aria-hidden="true"></div>
         <div class="hero-content container">
           <h1 id="hero-heading" class="hero-heading">
-            <span class="accent-blue">Today’s customers.</span>
-            <br />
-            <span class="accent-orange">Tomorrow’s community.</span>
+            <!--
+              Split the hero title across two lines for contrast: the first
+              phrase in warm orange and the second in cool blue.  This
+              combination draws the eye without overwhelming the page.
+            -->
+            <span class="accent-orange">Serve moments of</span><br />
+            <span class="accent-blue">human connection</span>
           </h1>
           <p class="subheadline">
-            Serve a sprinkle of connection. Add it to your café for free.
+            <strong>Today’s customers. Tomorrow’s community.</strong>
           </p>
           <form
             id="venue-top-form"
-            class="form waitlist-form"
+            class="waitlist-form"
             data-source="venue"
             novalidate
           >
-            <div class="fields-group">
-              <div class="input-wrapper">
-                <label for="addressTop" class="visually-hidden">Business address</label>
-                <input
-                  type="text"
-                  id="addressTop"
-                  name="businessAddress"
-                  placeholder="Business address"
-                  required
-                />
-              </div>
+            <div class="form-row">
+              <label for="emailTop" class="visually-hidden">Business email</label>
+              <input
+                type="email"
+                id="emailTop"
+                name="emailAddress"
+                placeholder="Enter your business email"
+                required
+              />
+              <button type="submit" class="cta-btn">Join the Waitlist</button>
             </div>
             <!-- Honeypot to trap bots; hidden from real users. -->
             <div class="honeypot" aria-hidden="true">
@@ -77,94 +84,146 @@
                 autocomplete="off"
               />
             </div>
-            <button type="submit" class="cta-btn">Join the waitlist</button>
             <div class="form-status" aria-live="polite"></div>
           </form>
         </div>
       </section>
 
-      <!-- Benefits snapshot section describing why cafés love Ripl. -->
+      <!-- Benefits snapshot: Why Venues Love Ripl -->
       <section class="benefits" aria-labelledby="benefits-heading">
         <div class="container">
-          <h2 id="benefits-heading">The ripl lift</h2>
-          <ul class="benefits-list">
-            <li>
-              <strong>More repeat visits</strong> → Simple loyalty touchpoints keep guests coming back.
-            </li>
-            <li>
-              <strong>A warmer vibe</strong> → Strangers become regulars, regulars become friends.
-            </li>
-            <li>
-              <strong>Higher spend</strong> → Small boosts in engagement mean more orders each visit.
-            </li>
-            <li>
-              <strong>Easy to run</strong> → Lightweight, plug‑and‑play setup.
-            </li>
-          </ul>
+          <!-- Title case for section heading -->
+          <h2 id="benefits-heading">Why Venues Love Ripl</h2>
+          <div class="benefit-grid">
+            <div class="benefit-item">
+              <div class="benefit-icon">🔁</div>
+              <h3>More repeat visits</h3>
+              <p>Simple loyalty touchpoints bring guests back.</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🌟</div>
+              <h3>A warm atmosphere</h3>
+              <p>Strangers become regulars, regulars become friends.</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">💰</div>
+              <h3>Higher spend</h3>
+              <p>Gentle engagement nudges spark extra orders per visit.</p>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">⚙️</div>
+              <h3>Effortless setup</h3>
+              <p>Lightweight, plug‑and‑play.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- Simple flow section showing how Ripl turns coffee into community. -->
-      <section class="flow" aria-labelledby="flow-heading">
+      <!-- How It Works section -->
+      <section class="how-it-works" aria-labelledby="how-heading">
         <div class="container">
-          <h2 id="flow-heading">From coffee to community</h2>
-          <ol class="flow-list">
-            <li>Customers check in when they arrive.</li>
-            <li>
-              They spark connections with other guests in your café over shared
-              interests.
-            </li>
-            <li>
-              After about an hour, they’re nudged with a tailored offer to reorder.
-            </li>
-            <li>
-              They keep coming back, because your café feels like their community
-              home.
-            </li>
-          </ol>
+          <h2 id="how-heading">How It Works</h2>
+          <div class="how-wrapper">
+            <div class="steps">
+              <ol class="steps-list">
+                <li>Guests check in when they arrive.</li>
+                <li>They see people with shared interests and light ways to connect.</li>
+                <li>After about an hour, they get a tailored nudge to reorder.</li>
+                <li>Guests return for the social and networking opportunities.</li>
+              </ol>
+            </div>
+            <div class="mockups">
+              <div class="mockup">
+                <div class="mockup-placeholder">Check-in view</div>
+                <span class="mockup-label">Check In</span>
+              </div>
+              <div class="mockup">
+                <div class="mockup-placeholder">Connect view</div>
+                <span class="mockup-label">Connect</span>
+              </div>
+              <div class="mockup">
+                <div class="mockup-placeholder">Reorder nudge</div>
+                <span class="mockup-label">Reorder</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- Community vision and social proof section. -->
-      <section class="community" aria-labelledby="community-heading">
+      <!-- Social proof / Stat block -->
+      <section class="social-proof" aria-labelledby="proof-heading">
         <div class="container">
-          <h2 id="community-heading">Not just coffee, a buzzing community.</h2>
-          <p class="community-tagline">
-            Ripl helps you become the place people choose to spend time, connect, and
-            belong.
-          </p>
-          <blockquote class="testimonial">
-            “82% of café‑goers say they return more often when they feel part of
-            the community.”
-          </blockquote>
+          <h2 id="proof-heading" class="visually-hidden">Social proof</h2>
+          <p class="proof-quote">89% of guests say they would return more often when they feel part of the community.</p>
+          <!-- The testimonial has been removed to focus solely on the core statistic. -->
         </div>
       </section>
 
-      <!-- Final call to action with a single address field. -->
-      <section class="final-cta" aria-labelledby="final-cta-heading">
+      <!-- Effortless setup section -->
+      <section class="setup-section" aria-labelledby="setup-heading">
+        <div class="container setup-wrapper">
+          <div class="setup-text">
+            <h2 id="setup-heading">Effortless Setup</h2>
+            <ul class="setup-list">
+              <!-- Refreshed bullet points emphasise simplicity and ease of use -->
+              <li><strong>No hardware or POS change</strong> - live in minutes.</li>
+              <li><strong>Simple QR or link</strong> in menu, table tents or Wi‑Fi splash.</li>
+              <li><strong>Runs automatically</strong> in the background; no staff training required.</li>
+            </ul>
+          </div>
+          <div class="setup-illustration">
+            <div class="illustration-placeholder">Setup illustration</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ section -->
+      <section class="faq-section" aria-labelledby="faq-heading">
         <div class="container">
-          <h2 id="final-cta-heading">
-            People come for coffee, but stay for connection.
-          </h2>
+          <h2 id="faq-heading">FAQ</h2>
+          <details class="faq-item">
+            <summary>How much time will my staff spend on this?</summary>
+            <p>Almost none. It runs quietly. You can add table tents or a QR once and you are set.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do I need new hardware or a POS integration?</summary>
+            <p>No new hardware. No POS change. Start with QR and links.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does it require guests to download an app?</summary>
+            <p>No download required to get value.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How much does Ripl cost?</summary>
+            <p>Ripl is a free service. We earn revenue from additional menu orders triggered by in‑app nudges and reorders.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What about privacy?</summary>
+            <p>Guests control what they share and who can see it. Venues only see aggregated insights.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Final call to action -->
+      <section class="final-cta cta-section" aria-labelledby="final-cta-heading">
+        <div class="container">
+          <h2 id="final-cta-heading">People come for coffee, but stay for connection.</h2>
           <form
             id="venue-bottom-form"
-            class="form waitlist-form"
+            class="waitlist-form"
             data-source="venue"
             novalidate
           >
-            <div class="fields-group">
-              <div class="input-wrapper">
-                <label for="addressBottom" class="visually-hidden"
-                  >Business address</label
-                >
-                <input
-                  type="text"
-                  id="addressBottom"
-                  name="businessAddress"
-                  placeholder="Business address"
-                  required
-                />
-              </div>
+            <div class="form-row">
+              <label for="emailBottom" class="visually-hidden">Business email</label>
+              <input
+                type="email"
+                id="emailBottom"
+                name="emailAddress"
+                placeholder="Enter your business email"
+                required
+              />
+              <button type="submit" class="cta-btn">Join the Waitlist</button>
             </div>
             <div class="honeypot" aria-hidden="true">
               <label for="websiteBottom">Website</label>
@@ -176,7 +235,6 @@
                 autocomplete="off"
               />
             </div>
-            <button type="submit" class="cta-btn">Join the Waitlist Today</button>
             <div class="form-status" aria-live="polite"></div>
           </form>
         </div>

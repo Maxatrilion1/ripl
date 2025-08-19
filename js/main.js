@@ -126,12 +126,21 @@
         }
       });
 
-      // Basic email validation
+      // Basic email validation: ensure an @ and domain are present
       const email = payload.emailAddress;
-      if (email && isPersonalEmail(email)) {
-        hasError = true;
-        if (statusEl) {
-          statusEl.textContent = 'Please use a business email (no personal domains).';
+      if (email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          hasError = true;
+          if (statusEl) {
+            statusEl.textContent = 'Please enter a valid email address.';
+          }
+        } else if (isPersonalEmail(email)) {
+          // Disallow personal webmail domains for sign‑ups
+          hasError = true;
+          if (statusEl) {
+            statusEl.textContent = 'Please use a business email (no personal domains).';
+          }
         }
       }
 
